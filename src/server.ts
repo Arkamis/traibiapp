@@ -57,13 +57,13 @@ class Server {
         this.app.use(compression());
         this.app.use(cors());
 
-        this.app.use(express.static(__dirname + 'public/'));
+        this.app.use(express.static('public/'));
     }
 
     public routes(): void {
         // const router: Router = express.Router();
 
-        this.app.get('/', new indexRoutes().router);
+        this.app.use('/', new indexRoutes().router);
         this.app.use('/api/users', new UserRoutes().router);
         this.app.use('/api/products', new ProductRoutes().router);
         this.app.use('/api/orders', new OrderRoutes().router);
